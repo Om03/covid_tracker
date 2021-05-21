@@ -11,6 +11,7 @@ function Card() {
     async function getData() {
       const data = await axios.get(url);
       setData(data.data.statewise[0]);
+      console.log(data);
     }
      getData();
   }, []);
@@ -27,7 +28,7 @@ function Card() {
         <div className="col-md-4">
           <div className="card card-2">
             <h3>Recovered</h3>
-            <p>{data.active}</p>
+            <p>{data.recoverd}</p>
           </div>
         </div>
         <div className="col-md-4">
