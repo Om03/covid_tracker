@@ -1,4 +1,3 @@
-import recat from "react";
 import "./Table.scss";
 
 function SubComponent(props) {

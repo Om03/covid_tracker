@@ -86,3 +86,18 @@ body {
     margin: 20px;
   }
 }
+
+.row{
+  width: 100%;
+}
+
+.col-md-4{
+  padding: 1%;
+}
+
+.card-7{
+  background-color: rgb(128, 139, 240);
+  background-repeat: no-repeat;
+  background-position: right;
+  background-size: 80px;
+}

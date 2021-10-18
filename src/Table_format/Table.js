@@ -1,18 +1,23 @@
-import react from "react";
 import "./Table.scss";
 import SubComponent from "./SubComponet";
-import { useEffect, useState } from "react";
 import axios from "axios";
+import { useEffect, useState } from "react";
+import { covidData } from "./data";
+import { useHistory } from "react-router-dom";
 
 function Table() {
   const [data2, setData] = useState([]);
   const url = "https://api.covid19india.org/data.json";
-  const val = 0;
+  const history = useHistory();
 
   useEffect(() => {
     async function getData() {
-      const data = await axios.get(url);
-      setData(data.data.statewise);
+      try {
+        const data = await axios.get(url);
+        setData(data.data.statewise);
+      } catch (error) {
+        setData(covidData);
+      }
     }
     getData();
   }, []);
@@ -42,12 +47,19 @@ function Table() {
             </div>
           </div>
           <div className="table-content">
-            {data2.map((actual , index) => (
-              <SubComponent  key = {index} properties ={actual} />
+            {data2?.map((actual, index) => (
+              <SubComponent key={index} properties={actual} />
             ))}
           </div>
         </div>
       </div>
+      <button
+        onClick={() => {
+          history.push("/");
+        }}
+      >
+        Go Back
+      </button>
     </>
   );
 }
